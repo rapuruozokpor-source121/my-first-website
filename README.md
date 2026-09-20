@@ -60,6 +60,19 @@
       color: #2c3e50;
       font-size: 1.1em;
     }
+    .profile-photo {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      float: left;
+      margin-right: 24px;
+      margin-bottom: 10px;
+      border: 4px solid #2c3e50;
+    }
+    .about-clear {
+      clear: both;
+    }
     footer {
       text-align: center;
       padding: 25px;
@@ -78,7 +91,9 @@
 
   <section id="about">
     <h2>About</h2>
+    <img src="images/rapuru.jpg" alt="Rapuru - Founder of Vistabot MediaTech" class="profile-photo">
     <p>I help businesses create engaging video content and run effective ad campaigns to reach more customers.</p>
+    <div class="about-clear"></div>
   </section>
 
   <section id="services">
