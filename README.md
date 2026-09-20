@@ -129,7 +129,7 @@
         <label>Message</label><br>
         <textarea name="message" rows="5" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
       </div>
-      <button type="submit" style="background-color: #2c3e50; color: white; padding: 12px 30px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">Send Message</button>
+      <button type="submit" style="background-color: #2c3e50; color: white; padding: 12px 30px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">Send PPMessage</button>
     </form>
 
     <p style="margin-top: 20px;">Or reach me directly: janedoe@gmail.com</p>
