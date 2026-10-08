@@ -5,6 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Vistabot MediaTech</title>
 </head>
+  <div id="vb-chat" style="position:fixed;bottom:20px;right:20px;width:300px;background:#fff;border:1px solid #ccc;border-radius:10px;font-family:sans-serif;box-shadow:0 4px 12px rgba(0,0,0,.2);z-index:9999">
+  <div style="background:#1a73e8;color:#fff;padding:10px;border-radius:10px 10px 0 0">Chat with Vistabot</div>
+  <div id="vb-msgs" style="height:250px;overflow-y:auto;padding:10px;font-size:14px;color:#000"></div>
+  <div style="display:flex;border-top:1px solid #ccc">
+    <input id="vb-input" placeholder="Type a message..." style="flex:1;border:none;padding:10px;outline:none">
+    <button id="vb-send" style="border:none;background:#1a73e8;color:#fff;padding:0 15px;border-radius:0 0 10px 0">Send</button>
+  </div>
+</div>
+<script>
+  const vbUrl = "https://vistabot-chat.rapuruozokpor-404.workers.dev";
+  const msgs = document.getElementById("vb-msgs");
+  const input = document.getElementById("vb-input");
+  function add(who, text) {
+    msgs.innerHTML += `<p><b>${who}:</b> ${text}</p>`;
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+  async function send() {
+    const text = input.value.trim();
+    if (!text) return;
+    add("You", text);
+    input.value = "";
+    try {
+      const res = await fetch(vbUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text })
+      });
+      const data = await res.json();
+      add("Vistabot", data.reply);
+    } catch (e) {
+      add("Vistabot", "Sorry, I can't connect right now.");
+    }
+  }
+  document.getElementById("vb-send").onclick = send;
+  input.addEventListener("keydown", e => { if (e.key === "Enter") send(); });
+</script>
 <body>
   <h1>Vistabot MediaTech</h1>
   <p>AI chatbots, video editing, and ad creative for local businesses.</p>
